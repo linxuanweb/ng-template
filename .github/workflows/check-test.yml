@@ -1,0 +1,25 @@
+name: Run Angular Tests
+
+on:
+  pull_request:
+    branches: 
+      - master # 主分支名
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18 # 使用你的项目的 Node.js 版本
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Run Tests
+      run: npm run test
