@@ -96,65 +96,63 @@
                     }
                 },
                 "server": {
-                  "builder": "@angular-devkit/build-angular:server",
-                  "options": {
-                    "outputPath": "dist/ng-template/server",
-                    "main": "server.ts",
-                    "tsConfig": "tsconfig.server.json",
-                    "inlineStyleLanguage": "less"
-                  },
-                  "configurations": {
-                    "production": {
-                      "outputHashing": "media"
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "dist/ng-template/server",
+                        "main": "server.ts",
+                        "tsConfig": "tsconfig.server.json",
+                        "inlineStyleLanguage": "less"
                     },
-                    "development": {
-                      "buildOptimizer": false,
-                      "fileReplacements": [
-                        {
-                          "replace": "src/environments/environment.ts",
-                          "with": "src/environments/environment.development.ts"
+                    "configurations": {
+                        "production": {
+                            "outputHashing": "media"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.development.ts"
+                                }
+                            ],
+                            "optimization": false,
+                            "sourceMap": true,
+                            "extractLicenses": false,
+                            "vendorChunk": true
                         }
-                      ],
-                      "optimization": false,
-                      "sourceMap": true,
-                      "extractLicenses": false,
-                      "vendorChunk": true
-                    }
-                  },
-                  "defaultConfiguration": "production"
+                    },
+                    "defaultConfiguration": "production"
                 },
                 "serve-ssr": {
-                  "builder": "@nguniversal/builders:ssr-dev-server",
-                  "configurations": {
-                    "development": {
-                      "browserTarget": "ng-template:build:development",
-                      "serverTarget": "ng-template:server:development"
+                    "builder": "@nguniversal/builders:ssr-dev-server",
+                    "configurations": {
+                        "development": {
+                            "browserTarget": "ng-template:build:development",
+                            "serverTarget": "ng-template:server:development"
+                        },
+                        "production": {
+                            "browserTarget": "ng-template:build:production",
+                            "serverTarget": "ng-template:server:production"
+                        }
                     },
-                    "production": {
-                      "browserTarget": "ng-template:build:production",
-                      "serverTarget": "ng-template:server:production"
-                    }
-                  },
-                  "defaultConfiguration": "development"
+                    "defaultConfiguration": "development"
                 },
                 "prerender": {
-                  "builder": "@nguniversal/builders:prerender",
-                  "options": {
-                    "routes": [
-                      "/"
-                    ]
-                  },
-                  "configurations": {
-                    "production": {
-                      "browserTarget": "ng-template:build:production",
-                      "serverTarget": "ng-template:server:production"
+                    "builder": "@nguniversal/builders:prerender",
+                    "options": {
+                        "routes": ["/"]
                     },
-                    "development": {
-                      "browserTarget": "ng-template:build:development",
-                      "serverTarget": "ng-template:server:development"
-                    }
-                  },
-                  "defaultConfiguration": "production"
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "ng-template:build:production",
+                            "serverTarget": "ng-template:server:production"
+                        },
+                        "development": {
+                            "browserTarget": "ng-template:build:development",
+                            "serverTarget": "ng-template:server:development"
+                        }
+                    },
+                    "defaultConfiguration": "production"
                 }
             }
         }
