@@ -19,6 +19,7 @@ describe('CommonService', () => {
         const res2 = service.getName(2, 'day');
         expect(res).toEqual('day');
         expect(res2).toEqual('days');
+        expect(res2).toEqual('days');
 
         done();
     });
